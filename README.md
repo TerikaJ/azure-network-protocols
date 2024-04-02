@@ -240,5 +240,5 @@ _Because we are currently using RDP to run the virtual machine, anything and eve
 <h1><p align=center> Done! Good job! </p></h1>
 
 <p align=right>DELETE **EVERYTHING!** IN AZURE TO SAVE CREDITS!<br>
-If you don't know how to, click <a href="https://github.com/terikaj/azure-start/blob/main/README.md#bonus-delete-all-resources-in-azure">HERE</a>
+If you don't know how to, click <a href="https://github.com/terikaj/azure-begin?tab=readme-ov-file">HERE</a>
 </p>
