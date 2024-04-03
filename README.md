@@ -2,7 +2,7 @@
 <img src="https://i.imgur.com/Ua7udoS.png" height="80%" width="80%" alt="Traffic Examination"/>
 </p>
 
-<h1>Network Security Groups (NSGs) and Inspecting Traffic Between Azure Virtual Machines</h1>
+<h1>Configuring Network Protocols, Security Groups, and Inspecting Traffic Between 2 Azure Virtual Machines</h1>
 
 This demonstration goes over how to observe various network traffic to and from Azure Virtual Machines with Wireshark as well as experiment with Network Security Groups.
 
