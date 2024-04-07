@@ -199,6 +199,7 @@ _Now that we've observed the denial of packets, let's try allow it again, howeve
 - Type in "exit" to close the linked connection and return to VM1's control.
 <p align="center">
 <img width="673" alt="Screen Shot 2024-04-06 at 6 46 31 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/bb2142e6-06c0-4efd-abd7-89c8d53d6dc3">
+<img width="1527" alt="Screen Shot 2024-04-06 at 6 47 39 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/20e48894-0749-4273-9d26-774845581645">
 </p>
 
 <h3>Observe DHCP, DNS, and RDP Traffic using Wireshark</h3>
@@ -208,7 +209,8 @@ _Now that we've observed the denial of packets, let's try allow it again, howeve
   - The virtual machine will briefly lose connection, but will return shortly.
 - Observe the new activity in Wireshark.
 <p align="center">
-<img src="https://i.imgur.com/s3OoQOI.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img width="1525" alt="Screen Shot 2024-04-06 at 6 51 58 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/06ae1e32-5b8a-4023-bb12-4b91c8d52047">
+<img width="1517" alt="Screen Shot 2024-04-06 at 6 54 24 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/4e713e0b-027e-4976-8076-a42c446aa18c">
 </p>
 
 _Next to observe DNS traffic activity:_
@@ -217,17 +219,17 @@ _Next to observe DNS traffic activity:_
 - Clear the boxes by pressing the "Restart current capture" button (green shark fin).
 - From PowerShell, type `nslookup www.google.com`, observe the new activity in Wireshark.
 <p align="center">
-<img src="https://i.imgur.com/sKPc1ap.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img width="1517" alt="Screen Shot 2024-04-06 at 6 56 47 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/d072e708-3048-4ca6-bd73-626aeea452e1">
 <img src="https://i.imgur.com/xvQtTBC.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/bDKkcYl.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img width="1520" alt="Screen Shot 2024-04-06 at 7 01 06 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/1c2cc8a1-707e-4e3e-ba50-092e73ba8958">
 </p>
 
-_Finally to observe DNS traffic activity:_
+_Finally to observe RDP traffic activity:_
 - From Wireshark, search for "rdp", then ENTER (there should be a lot of traffic, non-stop).
   - A more direct way is typing "tcp.port == 3389".
 _Because we are currently using RDP to run the virtual machine, anything and everything done while in the VM is captured into Wireshark._
 <p align="center">
-<img src="https://i.imgur.com/fvClqHS.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img width="1521" alt="Screen Shot 2024-04-06 at 7 02 11 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/1d2f9e48-add4-4cb4-be70-8c784577ffcf">
 </p>
 
 <h3>BONUS: Display and Flush DNS</h3>
@@ -236,14 +238,14 @@ _Because we are currently using RDP to run the virtual machine, anything and eve
   - _You should see many domain names to other websites with information below them._
   - _The saved data here allows your system to remember information a website that was already visited without and have access to it without making requesting for new info._
 <p align="center">
-<img src="https://i.imgur.com/dLrnksv.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img width="667" alt="Screen Shot 2024-04-06 at 7 04 59 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/778cf6f1-80a4-4e9e-8373-f00264cfca66">
 </p>
 
 - Type `ipconfig /flushdns`, then ENTER.
   - _This will essentially delete all entries within the cache, making your system require to make requests from the site for information as if were visiting the first time, which is then saved in the cache._
 - Type `ipconfig /displaydns` to see how everything has been cleared out and nothing to display.
 <p>
-<img src="https://i.imgur.com/bfOrHLb.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img width="666" alt="Screen Shot 2024-04-06 at 7 05 59 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/b20286b8-2fe1-40fe-a13d-7797bda372bb">
 </p>
 <hr>
 
