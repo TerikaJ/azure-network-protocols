@@ -137,9 +137,8 @@ _Note: The 'ping' tool within the Command Prompt (cmd) / PowerShell uses protoco
 - Type in `ping -t <Private IP address>` (this example would use command **ping -t 10.0.0.5**).
   - On Wireshark, you should be able to see the results of packets being perpetually sent and received.
 <p align="center">
-
-<img src="https://i.imgur.com/QlLMACP.jpg" height="30%" width="30%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/XnGJJ8b.jpg" height="60%" width="60%" alt="Disk Sanitization Steps"/>
+<img width="775" alt="Screen Shot 2024-04-06 at 6 13 01 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/e6599114-2602-4bfa-9337-baeb0a4c5b5a">
+<img width="1521" alt="Screen Shot 2024-04-06 at 6 14 19 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/7516e8a8-837e-4c9f-973c-6ffd63637f6b">
 </p>
 
 _While that is infinitely pinging, we'll try to deny those packets and observe what happens next:_
@@ -149,11 +148,13 @@ _While that is infinitely pinging, we'll try to deny those packets and observe w
 - Go to "Inbound security rules".
 - Click "Add"
 <p align="center">
-<img src="https://i.imgur.com/wrZKCE1.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img width="439" alt="Screen Shot 2024-04-06 at 6 16 00 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/82a13686-c962-4ede-bd5b-5ded74c84543">
+<img width="1052" alt="Screen Shot 2024-04-06 at 6 16 55 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/91e46276-c390-49d4-9d0b-4ae97e57deff">
+<img width="1048" alt="Screen Shot 2024-04-06 at 6 20 43 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/f45e43e3-e37c-46fb-a3e8-81c896c6ce9c">
 </p>
 
 - Change the protocol to "ICMP".
-- Change the Action to "Deny" (_we are trying to stop any packet requests from VM1_).
+- Change the Action to "Deny" (_we are trying to stop any packet requests from Client-01_).
 - Change the Priorty to a lower number than the lowest one already set (this example uses **200**).
   - _A lower number means it performs the task before any higher number after it._
 - You can change the Name if you desire, but not needed (this example uses **DENY_ICMP_PING_FROM_ANYWHERE**).
