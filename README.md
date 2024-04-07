@@ -161,17 +161,16 @@ _While that is infinitely pinging, we'll try to deny those packets and observe w
 - Click "Add".
 - Wait for a bit to take effect, but return to VM1 and observe the requests time out.
 <p align="center">
-<img src="https://i.imgur.com/NC8PHxH.jpg" height="60%" width="60%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/Q9nha7H.jpg" height="60%" width="60%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/bCN1O9d.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img width="1523" alt="Screen Shot 2024-04-06 at 6 24 56 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/ccf4faf6-6c8a-4b02-b438-bb7a05700b52">
 </p>
 
 _Now that we've observed the denial of packets, let's try allow it again, however, instead of deleting the added rule, we can simply edit the Action to "Allow"._
 <p align="center">
-<img src="https://i.imgur.com/Mzxx3Pk.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/oIGcjGU.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/wOJxDon.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img width="821" alt="Screen Shot 2024-04-06 at 6 27 40 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/a5104f2d-b96a-4de4-9e42-a3e0b2917320">
+<img width="828" alt="Screen Shot 2024-04-06 at 6 28 55 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/0eca175c-543b-4f43-a80f-ff5eb361e47b">
+<img width="1514" alt="Screen Shot 2024-04-06 at 6 35 02 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/cd3df419-8362-4942-b9cc-74965f0e815d">
 </p>
+
 
 - Once done, you can press Control+C to stop the pinging in PowerShell.
 
@@ -180,9 +179,9 @@ _Now that we've observed the denial of packets, let's try allow it again, howeve
 - From Wireshark, type "SSH" in the search bar and press ENTER (there should be no activity).
   - A more direct way is typing "tcp.port == 22".
 <p align="center">
-<img src="https://i.imgur.com/TBnNka8.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img width="1518" alt="Screen Shot 2024-04-06 at 6 37 52 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/aa607e9b-32f7-44e9-a752-8154aafd539d">
 </p>
-- From PowerShell, type `ssh <VM2 username@Private IP address>` (this example would use **ssh linuser@10.0.0.5**).
+- From PowerShell, type `ssh <VM2 username@Private IP address>` (this example would use **ssh linuser@10.0.0.6**).
 - When it asks if you want to continue connecting, just type "yes", then ENTER.
 - It will then ask you for the password for VM2.
   - When typing the password, there will be no visual indicator of you typing, but inputs are being read.
@@ -190,8 +189,8 @@ _Now that we've observed the denial of packets, let's try allow it again, howeve
   - You should then see the VM2's username, but colored Green.
     - Because VM2 uses Ubuntu, commands must now be in Linux format.
 <p align="center">
-<img src="https://i.imgur.com/QZbMzg2.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/STDQ3b0.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img width="694" alt="Screen Shot 2024-04-06 at 6 41 39 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/c6821b32-076c-4d01-a72b-d7c6a0de23a5">
+<img width="666" alt="Screen Shot 2024-04-06 at 6 44 11 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/503b69df-ec82-4682-95ca-9ff7f2bf3202">
 </p>
 
 - Now accessed to VM2, from PowerShell, type "id", then ENTER.
@@ -199,7 +198,7 @@ _Now that we've observed the denial of packets, let's try allow it again, howeve
 - Observe the new traffic on Wireshark.
 - Type in "exit" to close the linked connection and return to VM1's control.
 <p align="center">
-<img src="https://i.imgur.com/GGXC4Ry.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img width="673" alt="Screen Shot 2024-04-06 at 6 46 31 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/bb2142e6-06c0-4efd-abd7-89c8d53d6dc3">
 </p>
 
 <h3>Observe DHCP, DNS, and RDP Traffic using Wireshark</h3>
