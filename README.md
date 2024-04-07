@@ -132,20 +132,20 @@ _We repeat the previous steps listed in the creation of Client-01 VM, however, o
 
 _Note: The 'ping' tool within the Command Prompt (cmd) / PowerShell uses protocol ICMPv4._
 - Minimize the virtual machine window; Navigate back to the Azure Portal.
-- Go to VM2's Overview page and copy the PRIVATE IP address (this example uses **10.0.0.5**).
-- Return to VM2, press the Windows Key/Button and seach for "CMD" or "PowerShell".
-- Type in `ping -t <Private IP address>` (this example would use command **ping -t 10.0.0.5**).
-  - On Wireshark, you should be able to see the results of packets being perpetually sent and received.
+- Go to VM2's Overview page and copy the PRIVATE IP address (this example uses **10.0.0.6**).
+- Return to VM2, press the Windows Key/Button and search for "CMD" or "PowerShell".
+- Type in `ping -t <Private IP address>` (this example uses command **ping -t 10.0.0.6**).
+  - Observing Wireshark, you should see an infinite reply from 10.0.0.6.
 <p align="center">
 <img width="775" alt="Screen Shot 2024-04-06 at 6 13 01 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/e6599114-2602-4bfa-9337-baeb0a4c5b5a">
 <img width="1521" alt="Screen Shot 2024-04-06 at 6 14 19 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/7516e8a8-837e-4c9f-973c-6ffd63637f6b">
 </p>
 
-_While that is infinitely pinging, we'll try to deny those packets and observe what happens next:_
-- Minimize the virtual machine to the Azure Portal.
+_While the infinite ping is taking place, we'll attempt to deny the reply ping and observe what happens next:_
+- Minimize the virtual machine and navigate back to the Azure Portal.
 - In the Search Box at the top header, type and select "Network Security Groups".
-- Click on "VM2-nsg".
-- Go to "Inbound security rules".
+- Click "VM2-nsg".
+- Navigate to "Inbound security rules".
 - Click "Add"
 <p align="center">
 <img width="439" alt="Screen Shot 2024-04-06 at 6 16 00 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/82a13686-c962-4ede-bd5b-5ded74c84543">
@@ -154,49 +154,48 @@ _While that is infinitely pinging, we'll try to deny those packets and observe w
 </p>
 
 - Change the protocol to "ICMP".
-- Change the Action to "Deny" (_we are trying to stop any packet requests from Client-01_).
-- Change the Priorty to a lower number than the lowest one already set (this example uses **200**).
-  - _A lower number means it performs the task before any higher number after it._
-- You can change the Name if you desire, but not needed (this example uses **DENY_ICMP_PING_FROM_ANYWHERE**).
+- Change the Action to "Deny" (_we are going to stop any & all ICMP packet requests from Client-   01_).
+- Change the Priorty to a lower number than the number currently set (this example uses **200**).
+  - _A lower number indicates the task is performed prior to any higher priority number._
+- You can change the Name if you desire, but is not necessary (this example uses **DENY_ICMP_PING_FROM_ANYWHERE**).
 - Click "Add".
-- Wait for a bit to take effect, but return to VM1 and observe the requests time out.
+- Please allow a few minutes for the change to take affect; In the meantime, return to Client-01   to observe the time out requests.
 <p align="center">
 <img width="1523" alt="Screen Shot 2024-04-06 at 6 24 56 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/ccf4faf6-6c8a-4b02-b438-bb7a05700b52">
 </p>
 
-_Now that we've observed the denial of packets, let's try allow it again, however, instead of deleting the added rule, we can simply edit the Action to "Allow"._
+_Now that we've observed the denial, we can reconfigure back to allow. Remember, there's no need to delete the added rule. We can change the Action back to "Allow"._
 <p align="center">
 <img width="821" alt="Screen Shot 2024-04-06 at 6 27 40 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/a5104f2d-b96a-4de4-9e42-a3e0b2917320">
 <img width="828" alt="Screen Shot 2024-04-06 at 6 28 55 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/0eca175c-543b-4f43-a80f-ff5eb361e47b">
 <img width="1514" alt="Screen Shot 2024-04-06 at 6 35 02 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/cd3df419-8362-4942-b9cc-74965f0e815d">
 </p>
 
-
-- Once done, you can press Control+C to stop the pinging in PowerShell.
+- When finished, press Control+C to stop the pinging in CMD / PowerShell.
 
 <h3>Observe SSH Traffic using Wireshark</h3>
 
-- From Wireshark, type "SSH" in the search bar and press ENTER (there should be no activity).
-  - A more direct way is typing "tcp.port == 22".
+- Within Wireshark, type "SSH" in the search bar and press ENTER (there should be no activity).
+  - A direct pathway is typing "tcp.port == 22".
 <p align="center">
 <img width="1518" alt="Screen Shot 2024-04-06 at 6 37 52 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/aa607e9b-32f7-44e9-a752-8154aafd539d">
 </p>
-- From PowerShell, type `ssh <VM2 username@Private IP address>` (this example would use **ssh linuser@10.0.0.6**).
-- When it asks if you want to continue connecting, just type "yes", then ENTER.
-- It will then ask you for the password for VM2.
-  - When typing the password, there will be no visual indicator of you typing, but inputs are being read.
-- Once you think you typed your password correctly, press ENTER.
-  - You should then see the VM2's username, but colored Green.
-    - Because VM2 uses Ubuntu, commands must now be in Linux format.
+- Inside PowerShell, type `ssh <VM2 username@Private IP address>` (this example would use **ssh linuser@10.0.0.6**).
+- When aksed if you would like to continue connecting, type "yes", then ENTER.
+- It will ask you for the password for VM2.
+  - When typing the password, there will be no visual indicator of you typing, however, inputs       are being recorded.
+- Once your password is typed, press ENTER.
+  - You should see VM2's username, and colored Green.
+    - Since VM2 uses Ubuntu, commands are now in Linux format.
 <p align="center">
 <img width="694" alt="Screen Shot 2024-04-06 at 6 41 39 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/c6821b32-076c-4d01-a72b-d7c6a0de23a5">
 <img width="666" alt="Screen Shot 2024-04-06 at 6 44 11 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/503b69df-ec82-4682-95ca-9ff7f2bf3202">
 </p>
 
-- Now accessed to VM2, from PowerShell, type "id", then ENTER.
-  - This will give you the indentity group information for VM2's user.
-- Observe the new traffic on Wireshark.
-- Type in "exit" to close the linked connection and return to VM1's control.
+- Now that have access to VM2, within PowerShell or CMD, type "id", then ENTER.
+  - This gives us the indentity group information for VM2's user.
+- Observe the new traffic appearing on Wireshark.
+- Type "exit" to close the linked connection and return to Client-01's CMD.
 <p align="center">
 <img width="673" alt="Screen Shot 2024-04-06 at 6 46 31 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/bb2142e6-06c0-4efd-abd7-89c8d53d6dc3">
 <img width="1527" alt="Screen Shot 2024-04-06 at 6 47 39 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/20e48894-0749-4273-9d26-774845581645">
@@ -204,7 +203,7 @@ _Now that we've observed the denial of packets, let's try allow it again, howeve
 
 <h3>Observe DHCP, DNS, and RDP Traffic using Wireshark</h3>
 
-- From Wireshark, search for "dhcp", then ENTER (there should be no activity).
+- In Wireshark, search for "dhcp", then ENTER (there should be no activity).
 - From PowerShell, type `ipconfig /renew`, then ENTER.
   - The virtual machine will briefly lose connection, but will return shortly.
 - Observe the new activity in Wireshark.
@@ -213,37 +212,37 @@ _Now that we've observed the denial of packets, let's try allow it again, howeve
 <img width="1517" alt="Screen Shot 2024-04-06 at 6 54 24 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/4e713e0b-027e-4976-8076-a42c446aa18c">
 </p>
 
-_Next to observe DNS traffic activity:_
-- From Wireshark, search for "dns", then ENTER (there should be a lot of traffic).
-  - A more direct way is typing "udp.port == 53".
-- Clear the boxes by pressing the "Restart current capture" button (green shark fin).
-- From PowerShell, type `nslookup www.google.com`, observe the new activity in Wireshark.
+_Next we observe DNS traffic activity:_
+- In Wireshark, search for "dns", then ENTER (there should be more traffic).
+  - A direct pathway is typing "udp.port == 53".
+- Clear the traffic by pressing the "Restart current capture" button (green shark fin).
+- In PowerShell, type `nslookup www.google.com`, observe the new activity in Wireshark.
 <p align="center">
 <img width="1517" alt="Screen Shot 2024-04-06 at 6 56 47 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/d072e708-3048-4ca6-bd73-626aeea452e1">
 <img src="https://i.imgur.com/xvQtTBC.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
 <img width="1520" alt="Screen Shot 2024-04-06 at 7 01 06 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/1c2cc8a1-707e-4e3e-ba50-092e73ba8958">
 </p>
 
-_Finally to observe RDP traffic activity:_
-- From Wireshark, search for "rdp", then ENTER (there should be a lot of traffic, non-stop).
-  - A more direct way is typing "tcp.port == 3389".
-_Because we are currently using RDP to run the virtual machine, anything and everything done while in the VM is captured into Wireshark._
+_Our final observation is RDP traffic activity:_
+- In Wireshark, search for "rdp", then ENTER (you should see continuous traffic).
+  - A direct pathway is typing "tcp.port == 3389".
+_Because we are currently utilizing RDP to run the virtual machine, everything done while inside the VM is captured into Wireshark._
 <p align="center">
 <img width="1521" alt="Screen Shot 2024-04-06 at 7 02 11 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/1d2f9e48-add4-4cb4-be70-8c784577ffcf">
 </p>
 
 <h3>BONUS: Display and Flush DNS</h3>
 
-- From PowerShell, type `ipconfig /displaydns`, the ENTER.
-  - _You should see many domain names to other websites with information below them._
-  - _The saved data here allows your system to remember information a website that was already visited without and have access to it without making requesting for new info._
+- In PowerShell, type `ipconfig /displaydns`, the ENTER.
+  - _You should see domain names to other websites with additional information._
+  - _The saved data in this location allows the system to remember information from websites         that were already visited. This is done without having access and without new request for        information._
 <p align="center">
 <img width="667" alt="Screen Shot 2024-04-06 at 7 04 59 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/778cf6f1-80a4-4e9e-8373-f00264cfca66">
 </p>
 
 - Type `ipconfig /flushdns`, then ENTER.
-  - _This will essentially delete all entries within the cache, making your system require to make requests from the site for information as if were visiting the first time, which is then saved in the cache._
-- Type `ipconfig /displaydns` to see how everything has been cleared out and nothing to display.
+  - _This command deletes all entries within the cache, making our system requiring our system       to make a new request from the site for information as if were visiting the site for the         first time; This will be saved in the cache._
+- Type `ipconfig /displaydns` to observe everything cleared out. There should be nothing to        display.
 <p>
 <img width="666" alt="Screen Shot 2024-04-06 at 7 05 59 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/b20286b8-2fe1-40fe-a13d-7797bda372bb">
 </p>
