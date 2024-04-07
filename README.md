@@ -93,47 +93,51 @@ _We repeat the previous steps listed in the creation of Client-01 VM, however, o
 <img width="653" alt="Screen Shot 2024-04-06 at 5 42 53 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/aec847d0-3a46-449c-ad1a-681ce9c53c97">
 </p>
 
-- On VM1, open Microsoft Edge (or any internet browser), then go to the Wireshark download page.
-  - You can simply Google Search it, or copy the link shown.
-- Click on "Windows Intel Installer" to start downloading the executable.
-- Once downloaded, click "Open file" to run the .exe file (you can also find this inside your Downloads folder within Windows Explorer)
+- On Client-01, open Microsoft Edge (or download Chrome), then navigate to the Wireshark           download page.
+  - You can Google search the link, or copy the link HERE https://www.wireshark.org/download.html
+- Click "Windows x64 Installer" to begin the download.
+- Once the application is downloaded, click "Open file" to run the .exe file (you can also find the file within your Downloads folder on the Windows Explorer page or your File Explorer)
 <p align="center">
-<img src="https://i.imgur.com/chUmI2q.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img width="653" alt="Screen Shot 2024-04-06 at 5 42 53 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/a7478003-90cd-4de3-b2d0-1d000d2426f5">
 </p>
 
 - The installation prompt will appear, hit "Next".
-- When the installation prompt appears, leave everything by default and keep pressing "Next" until you start Installing.
-- If any agreement prompts appear during installation, just agree to them and click install (without checkmarking anything).
-- After all installations are complete, click "Finish".
+- Once the installation prompt appears, leave everything by default and keep pressing "Next"       "Noted" until you reach "Installing".
+- If you notice an agreement prompt during installation, click agree & install.
+- After the installation is complete, click "Finish".
 <p align="center">
-<img src="https://i.imgur.com/kZJSHgb.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img width="518" alt="Screen Shot 2024-04-06 at 5 47 06 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/7c830896-2069-454b-b79f-4212b04d21ab">
+<img width="520" alt="Screen Shot 2024-04-06 at 5 48 16 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/e1c4de7c-16b8-433a-9038-032c0fad69c9">
+<img width="520" alt="Screen Shot 2024-04-06 at 5 53 25 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/2c9401d3-ea33-4139-b9fb-b04050639c01">
+<img width="519" alt="Screen Shot 2024-04-06 at 5 54 55 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/92f9e307-beb3-482b-8eec-9f7ceb4650af">
+<img width="517" alt="Screen Shot 2024-04-06 at 5 56 46 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/b461809e-9b29-43da-be7d-a851bbe8e5fd">
 </p>
 
 <h3>Observe ICMP Traffic using Wireshark</h3>
 
-- While in the virtual machine, run Wireshark.
-- Click the first button at the top (blue shark fin) to start capturing activity on the VM.
-  - You can see there is activity constantly going in the background of the VM, despite you not doing anything.
+- Within the virtual machine, navigate to the Wireshark application & click run. 
+- Click the first button (blue shark fin) at the top tool bar to begin capturing activity on the   VM.
+  - Observe the network activity taking place in the background of the VM.
 <p align="center">
-<img src="https://i.imgur.com/vVm7yX4.jpg" height="30%" width="30%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/ypuqGby.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/vo6Iafl.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img width="331" alt="Screen Shot 2024-04-06 at 5 57 55 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/79dda0ef-6d46-4088-8de4-fcad4b7c3495">
+<img width="786" alt="Screen Shot 2024-04-06 at 6 05 55 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/2d617a3c-85d6-404a-ba77-562160ffdaad">
 </p>
 
-- Click in the search box above, type in "ICMP", then press ENTER to confirm.
-  - You should then see all boxes blank (this is due to having no activity under the ICMP protocol)
+- Click the search box, type "ICMP", then press ENTER to confirm or the blue arrow in the right    corner.
+  - All boxes should become blank (since there is currently no activity under the ICMP protocol)
 <p align="center">
+<img width="793" alt="Screen Shot 2024-04-06 at 6 08 33 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/61b4c71e-cd68-48dd-bdea-6789236c46bd">
 <img src="https://i.imgur.com/a4jfqVg.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
 </p>
 
-_Note: The 'ping' tool within Command Prompt (cmd) / PowerShell uses protocol ICMPv4._
-- Minimize the virtual machine to the Azure Portal.
+_Note: The 'ping' tool within the Command Prompt (cmd) / PowerShell uses protocol ICMPv4._
+- Minimize the virtual machine window; Navigate back to the Azure Portal.
 - Go to VM2's Overview page and copy the PRIVATE IP address (this example uses **10.0.0.5**).
 - Return to VM2, press the Windows Key/Button and seach for "CMD" or "PowerShell".
 - Type in `ping -t <Private IP address>` (this example would use command **ping -t 10.0.0.5**).
   - On Wireshark, you should be able to see the results of packets being perpetually sent and received.
 <p align="center">
-<img src="https://i.imgur.com/a4jfqVg.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+
 <img src="https://i.imgur.com/QlLMACP.jpg" height="30%" width="30%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/XnGJJ8b.jpg" height="60%" width="60%" alt="Disk Sanitization Steps"/>
 </p>
