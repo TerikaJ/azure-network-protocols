@@ -19,7 +19,7 @@ _<b>NOTE:</b> This demonstration uses materials created in the previous demonstr
 <h2>Operating Systems Used </h2>
 
 - Windows 10 (21H2)
-- Ubuntu Server 20.04
+- Ubuntu Server 20.04 (Linux)
 - MacOS
 
 <h2>High-Level Steps</h2>
@@ -38,27 +38,28 @@ _<b>NOTE:</b> This demonstration uses materials created in the previous demonstr
 
 <h3>Creating 2 Virtual Machines</h3>
 
-- In the Search Box at the top header, type and select "Virtual machines".
-  - If "Virtual machines" is already listed on the front page, then you can simply click on it, rather than manually searching.
-- Click "Create", then select "Azure virtual machine".
+- In the Search Box at the top header, type and select "Virtual Machines".
+  - If "Virtual Machines" is already listed on the front page, click there to save yourself time     rather than manually searching.
+- Click "Create", then select "Azure Virtual Machine".
 <p align="center">
-<img src="https://i.imgur.com/tiC5aA4.jpg" height="80%" width="80%" alt="Step 1-1"/>
+<img width="418" alt="Azure 11" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/fc90faf5-2ff1-4fd3-94dc-8b535a9f3fa6">
+<img width="416" alt="Azure 12" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/8bd444fc-758c-4269-9d14-3e32bbebbc0c">
 </p>
 
-- Name your Virtual Machine anyway you want (this example uses **VM1**).
-  - Resource Group is automatically given a name when naming the Virtual Machine, but you can change it if you wish (this example uses **VM1_group**).
+- Name your Virtual Machine anyway you want (this example uses **Client-01**).
+  - The Resource Group is automatically given a name when naming the VM, but you can change it       if you wish (this example uses **DC-01_group**).
 - Change the Region that best suites your location (this example uses **(US) West US 3**).
-- Change the Image to a Windows OS (this example uses **Windows 10 Pro, version 22H2 - x64 Gen2**).
+- Change the Image to a Windows OS (this example uses **Windows 10 Pro, version 22H2 - x64         Gen2**).
 - Make sure the Size is adequate enough to run this server (this example uses **Standard_E2s_v3 - 2 vcpus, 16 GiB memory**).
-- Create a username and password of your choice (this example uses **winuser**).
-- Skip everything else and click "Review + create".
-  - IF there is a Licensing Checkbox at the end, make sure that is CHECKED!
-- If Validation passed, click "Create".
+- Create a username and password of your choice (this example uses **clientuser**).
+- Skip through the following sections; Click "Review + create".
+  - IF you notice a Licensing Checkbox at the end of the page, ensure it's CHECKED!
+- If Validation passes, click "Create".
 <p align="center">
-<img src="https://i.imgur.com/JnsNUpw.jpg" height="100%" width="100%" alt="Step 1-2"/>
+<img width="495" alt="AD 4 Step 2 Begins" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/4a36bb8f-1bec-4b41-92d2-8cd3f359c47e">
 </p>
 
-_Essentially repeat the same steps from creating the other virtual machine, but using Ubuntu (linux):_
+_We repeat the previous steps from creating the Client-01 virtual machine, but our Operating System is Ubuntu (Linux):_
 - Set the Resource Group to the same as VM1 (this example uses **VM1_group**).
 - Name your Virtual Machine anyway you want (this example uses **VM2**).
 - Change Image to Ubuntu Linux (this example uses **Ubuntu Server 20.04 LTS - x64 Gen2**)
