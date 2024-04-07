@@ -59,36 +59,38 @@ _<b>NOTE:</b> This demonstration uses materials created in the previous demonstr
 <img width="495" alt="AD 4 Step 2 Begins" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/4a36bb8f-1bec-4b41-92d2-8cd3f359c47e">
 </p>
 
-_We repeat the previous steps from creating the Client-01 virtual machine, but our Operating System is Ubuntu (Linux):_
-- Set the Resource Group to the same as VM1 (this example uses **VM1_group**).
-- Name your Virtual Machine anyway you want (this example uses **VM2**).
-- Change Image to Ubuntu Linux (this example uses **Ubuntu Server 20.04 LTS - x64 Gen2**)
-- Keep the size the same as the Windows VM (this example uses **Standard_E2s_v3 - 2 vcpus, 16 GiB memory**).
-- Change the Authentication type to "Password", and create any username (this example uses the username **linuser**).
-- Once done, press "Next:" until you reach "Networking" (or simply click the Networking tab".
+_We repeat the previous steps listed in the creation of Client-01 VM, however, our Operating System will be Ubuntu (Linux):_
+- Set the Resource Group to the same group as Client-01 VM (this example uses **DC-01_group**).
+- Name your Linux Virtual Machine anything you desire (this example uses **VM2**).
+- Change the **Image** to Ubuntu Linux (this example uses **Ubuntu Server 20.04 LTS - x64 Gen2**)
+- You may keep the size the same as the Windows VM (However, this example uses **Standard_E2s_v3
+  2 vcpus, 8 GiB memory**). As long as you are utilizing at minimum 2 vcpus, and 8gb of RAM you    will be fine.
+- Change the **Authentication type** to "Password", and create any username (this example uses the username **linuser**).
+- When finished, press "Next:" until you reach "Networking" (or click the Networking tab").
 <p align="center">
-<img src="https://i.imgur.com/X6DMGwE.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img width="474" alt="Screen Shot 2024-04-06 at 4 34 40 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/4357ed56-428e-4667-b0c5-4d4303ac1db7">
 </p>
 
-- Make sure that the Virtual Network is set as the same as Windows VM (this example uses **VM1-vnet**).
-- Set the Public IP to whatever it has automatically assigned to (you might have to confirm the selection).
-- Then press "Review + create".
-- If Validation passed, click "Create".
+- Ensure the Virtual Network is set to the same VNET as your Windows VM (this example uses **DC-01-vnet**).
+- Set the Public IP to the automatic selection (you may need to confirm the selection).
+- Click "Review + create".
+- If Validation passes, click "Create".
 <p align="center">
-<img src="https://i.imgur.com/snw2Byu.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img width="589" alt="Screen Shot 2024-04-06 at 4 38 44 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/94e6f0c9-1138-4d41-8148-7c08a5c56051">
 </p>
 
 <h3>Connecting to VM1 and Installing Wireshark</h3>
 
-- From Azure Portal, go to VM1's Overview page and copy the Public IP address.
-- Press the Windows Key/Button, then type in "Remote Desktop Connection" (RDP).
-- Input the IP into RDP and click "Connect" (this example uses **20.171.65.41**).
-- Enter the login credentials for VM1, then click "OK" (this example uses **winuser**).
-- When the Certificate Error prompt appears, just click "Yes".
-- As it boots up, you can disable all privacy settings when prompted, then hit "Accept".
+- Back in the Azure Portal, go to Client-01's Overview page and copy the Public IP address.
+- On your PC or Mac click the "Microsoft Remote Desktop Connection" (RDP). (this example uses      MacOS) 
+- Click Add PC and input the IP address and click "Connect" (this example uses **20.38.32.244**).
+- Enter the login credentials for Client-01, click "Continue" (this example uses **clientuser**).
+- You will see a Certificate prompt, just click "Continue".
+- In the inital boot, you can disable all privacy settings when prompted, click "Accept".
 <p align="center">
-<img src="https://i.imgur.com/4JNReKH.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/GyC1qlp.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img width="591" alt="Screen Shot 2024-04-06 at 5 34 49 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/30710db9-b1b0-497a-bd2e-9735e91b48fa">
+<img width="433" alt="Screen Shot 2024-04-06 at 5 36 32 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/f60b2b60-93d8-4e16-8f5e-94f2d1683246">
+<img width="653" alt="Screen Shot 2024-04-06 at 5 42 53 PM" src="https://github.com/TerikaJ/azure-network-protocols/assets/136477450/aec847d0-3a46-449c-ad1a-681ce9c53c97">
 </p>
 
 - On VM1, open Microsoft Edge (or any internet browser), then go to the Wireshark download page.
