@@ -2,33 +2,36 @@
 <img src="https://i.imgur.com/Ua7udoS.png" height="80%" width="80%" alt="Traffic Examination"/>
 </p>
 
-<h1>Configuring Network Protocols, Security Groups, and Inspecting Traffic Between 2 Azure Virtual Machines</h1>
+<h1>Configuring Network Protocols, Security Groups, and Inspecting Traffic Between Azure Virtual Machines</h1>
 
-This demonstration goes over how to observe various network traffic to and from Azure Virtual Machines with Wireshark as well as experiment with Network Security Groups.
+In this demonstration we go over the process for observing network traffic between Azure Virtual Machines within Wireshark. We also play around with configuring Network Security Groups.
 
 _<b>NOTE:</b> This demonstration uses materials created in the previous demonstration, ["Configuring On-premises Active Directory within Azure VMs"](https://github.com/terikaj/configure-ad)._
 
 <h2>Environments and Technologies Used</h2>
 
-- Microsoft Azure (Virtual Machines/Compute)
-- Remote Desktop
-- Various Command-Line Tools
-- Various Network Protocols (SSH, RDH, DNS, HTTP/S, ICMP)
-- Wireshark (Protocol Analyzer)
+- Microsoft Azure (Virtual Machine)
+- Microsoft Remote Desktop
+- Command-Line (Tools / Commands)
+- Network Protocols (DHCP, SSH, RDP, DNS, HTTP/S, ICMP)
+- Wireshark (Network Protocol Analyzer)
 
 <h2>Operating Systems Used </h2>
 
 - Windows 10 (21H2)
 - Ubuntu Server 20.04
+- MacOS
 
 <h2>High-Level Steps</h2>
 
 - Setup 2 Virtual Machines within Azure:
-  - Virtual Machine #1 (Windows 10)
-  - Virtual Machine #2 (Linux Ubuntu) -- using same Resource Group and Vnet as VM1
-- Use Remote Desktop (RDP) to VM1 and install Wireshark.
-- Use Wireshark and PowerShell to Observe Network Protocols (SSH, RDH, DNS, HTTP/S, ICMP)
-  - Add new Inbound Rules to Deny/Allow ICMP protocol.
+  - Client-01 VM #1 (Windows 10)
+  - VM #2 (Linux Ubuntu) -- uses the same Resource Group and Vnet as Client-01.
+  - _For this example Client-01 is located in DC-01 which is a remaining resource group/vnet we      had from the previous lab._
+  - **Feel free to create a new VM and resource group if you desire.**
+- Use Microsoft Remote Desktop (RDP) to access Client-01; Install Wireshark.
+- Use Wireshark and PowerShell to Observe Network Protocols (DHCP, SSH, RDP, DNS, HTTP/S, ICMP)
+  - Add new Inbound Rules to our linux machine such as Deny/Allow ICMP protocol.
 - Bonus: How to Display and Flush DNS.
 
 <h2>Actions and Observations</h2>
